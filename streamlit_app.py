@@ -8,33 +8,33 @@ import streamlit as st
 
 with st.sidebar:
     st.title('🤖💬 S+ SLE问诊机器人')
-    password = st.text_input('输入密码:', type='password')
-    if password == st.secrets['PASSWORD']:
-        client = OpenAI(
-            api_key=st.secrets['OPENAI_API_KEY'],
-            base_url="https://api.moonshot.cn/v1",
-        )
-        st.success('开始问诊吧!', icon='👉')
-    else:
-        st.warning('请输入正确的密码！', icon='⚠️')
-        
-    # if 'OPENAI_API_KEY' in st.secrets:
-    #     st.success('API key already provided!', icon='✅')
-    #     # openai.api_key = st.secrets['OPENAI_API_KEY']
+    # password = st.text_input('输入密码:', type='password')
+    # if password == st.secrets['PASSWORD']:
     #     client = OpenAI(
     #         api_key=st.secrets['OPENAI_API_KEY'],
     #         base_url="https://api.moonshot.cn/v1",
     #     )
+    #     st.success('开始问诊吧!', icon='👉')
     # else:
-    #     # openai.api_key = st.text_input('Enter OpenAI API token:', type='password')
-    #     client = OpenAI(
-    #         api_key=st.text_input('Enter OpenAI API token:', type='password'),
-    #         base_url="https://api.moonshot.cn/v1",
-    #     )
-    #     # if not (openai.api_key.startswith('sk-') and len(openai.api_key)==51):
-    #     #     st.warning('Please enter your credentials!', icon='⚠️')
-    #     # else:
-    #     st.success('Proceed to entering your prompt message!', icon='👉')
+    #     st.warning('请输入正确的密码！', icon='⚠️')
+        
+    if 'OPENAI_API_KEY' in st.secrets:
+        st.success('API key already provided!', icon='✅')
+        # openai.api_key = st.secrets['OPENAI_API_KEY']
+        client = OpenAI(
+            api_key=st.secrets['OPENAI_API_KEY'],
+            base_url="https://api.moonshot.cn/v1",
+        )
+    else:
+        # openai.api_key = st.text_input('Enter OpenAI API token:', type='password')
+        client = OpenAI(
+            api_key=st.text_input('Enter OpenAI API token:', type='password'),
+            base_url="https://api.moonshot.cn/v1",
+        )
+        # if not (openai.api_key.startswith('sk-') and len(openai.api_key)==51):
+        #     st.warning('Please enter your credentials!', icon='⚠️')
+        # else:
+        st.success('Proceed to entering your prompt message!', icon='👉')
 
 filename = 'rule_prompt.txt'
 
